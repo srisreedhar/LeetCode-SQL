@@ -115,3 +115,20 @@ from
     on curr_wea.recordDate = DATE_ADD(prev_wea.recordDate, INTERVAL 1 DAY)
 where
     curr_wea.temperature > prev_wea.temperature;
+
+
+
+--     select e.*,bonus
+-- from 577employee as e
+-- left join (select *,
+-- 			case when bonus is null then 0 else bonus end as bonus_flag
+--             from 577bonus) as b on e.empId = b.empId
+-- where bonus_flag < 1000;
+
+select e.name,
+        bonus
+from employee as e
+left join (select empId, bonus
+            from bonus  ) as b on e.empId = b.empId
+where ifnull(bonus,0) < 1000;
+
