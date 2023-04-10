@@ -1,5 +1,8 @@
 /*
 
+https://leetcode.com/problems/rising-temperature
+
+
 +---------------+---------+
 | Column Name   | Type    |
 +---------------+---------+
@@ -1257,4 +1260,6 @@ INSERT INTO leetcode_197 (id, recordDate, temperature) VALUES ('344', '1998-11-0
 INSERT INTO leetcode_197 (id, recordDate, temperature) VALUES ('550', '1998-02-10', '-50');
 
 
+
+-- Solution
 

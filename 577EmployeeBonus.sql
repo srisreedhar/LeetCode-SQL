@@ -1,5 +1,7 @@
 /*
 
+https://leetcode.com/problems/employee-bonus/
+
 Table: Employee
 
 +-------------+---------+
@@ -88,3 +90,28 @@ insert into 577Employee (empId, name, supervisor, salary) values ('4', 'Thomas',
 -- Truncate table Bonus
 insert into 577Bonus (empId, bonus) values ('2', '500');
 insert into 577Bonus (empId, bonus) values ('4', '2000');
+
+
+-- Solution
+
+-- Write your MySQL query statement below
+
+-- select id
+-- from (
+-- select id,recorddate,temperature,
+--         lag(temperature,1) over(order by recorddate) as prev_temp,
+--         lag(recorddate,1) over(order by recorddate) as prev_record_date
+-- from weather) as a
+-- where temperature > prev_temp 
+--         and (recorddate-prev_record_date)=1 
+--         and datediff(prev_record_date,prev_record_date) = 0
+
+
+select
+    curr_wea.id 
+from
+    Weather as curr_wea
+    join Weather as prev_wea
+    on curr_wea.recordDate = DATE_ADD(prev_wea.recordDate, INTERVAL 1 DAY)
+where
+    curr_wea.temperature > prev_wea.temperature;
